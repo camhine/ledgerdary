@@ -12,4 +12,24 @@ the CSV.
 END
 end
 
-puts help
+ERR_BAD_ARGS = 1
+
+def print_help_and_exit
+  puts help
+  exit(ARGV[0] == '-h' ? 0 : ERR_BAD_ARGS)
+end
+
+def exists_and_readable?(file_path)
+  File.exists?(file_path) && File.readable?(file_path)
+end
+
+case ARGV.length
+when 2
+  csv_file    = ARGV.shift
+  ledger_file = ARGV.shift
+  print_help_and_exit unless exists_and_readable?(csv_file) && exists_and_readable?(ledger_file)
+else
+  print_help_and_exit
+end
+
+exit 0
