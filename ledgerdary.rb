@@ -1,5 +1,10 @@
 #!/usr/bin/env ruby
 
+$LOAD_PATH << './'
+
+require 'ledger'
+require 'transaction_log'
+
 def help
   <<END
 usage: ledgerdary [-h] CSV_FILE LEDGER_FILE
@@ -32,4 +37,4 @@ else
   print_help_and_exit
 end
 
-exit 0
+puts Ledger.new(ledger_file).reconcile!(TransactionLog.new(csv_file)).ledger_data
