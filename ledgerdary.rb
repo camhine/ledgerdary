@@ -25,7 +25,7 @@ def print_help_and_exit
 end
 
 def exists_and_readable?(file_path)
-  File.exists?(file_path) && File.readable?(file_path)
+  File.exist?(file_path) && File.readable?(file_path)
 end
 
 case ARGV.length
