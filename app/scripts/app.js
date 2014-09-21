@@ -9,7 +9,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.sortable',
-    'LocalStorageModule'
+    'LocalStorageModule',
+    'angularFileUpload'
   ])
   .config(['localStorageServiceProvider', function (localStorageServiceProvider) {
     localStorageServiceProvider.setPrefix('ls');
@@ -20,7 +21,11 @@ angular
         templateUrl: 'views/todo.html',
         controller: 'TodoCtrl'
       })
+      .when('/upload', {
+        templateUrl: 'views/upload.html',
+        controller: 'UploadCtrl'
+      })
       .otherwise({
-        redirectTo: '/todo'
+        redirectTo: '/upload'
       });
   });
