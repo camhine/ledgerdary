@@ -1,6 +1,7 @@
 .bundle/config
 .sass-cache
 .tmp
+.vagrant
 bin
 bower_components
 dist
