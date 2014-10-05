@@ -20,6 +20,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision :babushka do |babushka|
     babushka.local_deps_path = 'babushka-deps'
-    babushka.meet 'nginx'
+    babushka.meet 'nginx',
+      :params => {
+        :site => 'ledgerdary',
+        :source => '/vagrant/dist'
+      }
   end
 end
