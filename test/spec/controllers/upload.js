@@ -16,7 +16,7 @@ describe('Controller: UploadCtrl', function () {
     });
   }));
 
-  iit('should upload files to the service', function () {
+  it('should upload files to the service', function () {
 
   });
 });
