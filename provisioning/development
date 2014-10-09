@@ -1,4 +1,7 @@
-default ansible_ssh_host=127.0.0.1 ansible_ssh_port=2200
+acrobat ansible_ssh_host=192.168.10.10
+
+[back-end]
+acrobat
 
 [front-end]
-default
+acrobat

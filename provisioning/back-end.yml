@@ -1,0 +1,4 @@
+---
+- hosts: back-end
+  roles:
+    - back-end

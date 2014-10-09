@@ -1,0 +1,16 @@
+---
+- name: fetch chruby
+  get_url:
+    dest: ~/chruby-{{chruby_version}}.tar.gz
+    url: https://github.com/postmodern/chruby/archive/v{{chruby_version}}.tar.gz
+
+- name: extract chruby
+  command: tar xzvf ~/chruby-{{chruby_version}}.tar.gz creates=~/chruby-{{chruby_version}}
+
+- name: install chruby
+  sudo: yes
+  command: make install chdir=/home/{{ansible_ssh_user}}/chruby-{{chruby_version}} creates=/usr/local/share/chruby/chruby.sh
+
+- name: enable chruby system-wide
+  sudo: yes
+  copy: src=etc/profile.d/chruby.sh dest=/etc/profile.d/chruby.sh

@@ -1,0 +1,23 @@
+---
+- name: fetch ruby-install
+  get_url:
+    url: https://github.com/postmodern/ruby-install/archive/v{{ruby_install_version}}.tar.gz
+    dest: ~/ruby-install-{{ruby_install_version}}.tar.gz
+    force: no
+
+- name: unpack ruby-install
+  shell: tar -xzf ~/ruby-install-{{ruby_install_version}}.tar.gz creates=~/ruby-install-{{ruby_install_version}}
+
+- name: install ruby-install
+  command: make install chdir=/home/vagrant/ruby-install-{{ruby_install_version}} creates=/usr/local/bin/ruby-install
+  sudo: yes
+
+- name: register project ruby version
+  shell: cat .ruby-version chdir=/vagrant
+  register: project_ruby_version
+
+- name: install project ruby
+  shell: /usr/local/bin/ruby-install ruby {{project_ruby_version.stdout}}
+  args:
+    creates: /opt/rubies/ruby-{{project_ruby_version.stdout}}
+  sudo: yes
