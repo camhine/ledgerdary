@@ -5,12 +5,9 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  # All Vagrant configuration is done here. The most common configuration
-  # options are documented and commented below. For a complete reference,
-  # please see the online documentation at vagrantup.com.
-
-  # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "ubuntu/trusty64"
+
+  config.vm.network 'private_network', ip: '192.168.10.10'
 
   # Avoid 'stdin is not a tty' error
   config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
@@ -18,12 +15,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Specify locale
   config.vm.provision 'shell', inline: 'locale-gen en_AU.UTF-8'
 
-  config.vm.provision :babushka do |babushka|
-    babushka.local_deps_path = 'babushka-deps'
-    babushka.meet 'nginx',
-      :params => {
-        :site => 'ledgerdary',
-        :source => '/vagrant/dist'
-      }
+  config.vm.provision :ansible do |ansible|
+    ansible.inventory_path = 'provisioning/development'
+    ansible.playbook = 'provisioning/site.yml'
   end
 end

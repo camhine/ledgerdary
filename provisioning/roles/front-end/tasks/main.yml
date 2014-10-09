@@ -1,0 +1,20 @@
+---
+- name: install nginx
+  apt:  pkg=nginx state=latest
+
+- name: create docroot
+  file: path=/var/www state=directory
+
+- name: link ledgerdary site into docroot
+  file: path=/var/www/ledgerdary src=/vagrant/dist state=link
+
+- name: copy ledgerdary site config file into sites-available
+  copy: src=etc/nginx/sites-available/ledgerdary dest=/etc/nginx/sites-available/ledgerdary
+
+- name: enable ledgerdary site
+  file: path=/etc/nginx/sites-enabled/ledgerdary src=/etc/nginx/sites-available/ledgerdary state=link
+
+- name: disable default nginx site
+  file: path=/etc/nginx/sites-enabled/default state=absent
+  notify:
+    - restart nginx
