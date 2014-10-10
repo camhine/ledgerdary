@@ -1,3 +1,4 @@
 ---
 chruby_version: 0.3.8
 ruby_install_version: 0.4.3
+project_dir: /vagrant
