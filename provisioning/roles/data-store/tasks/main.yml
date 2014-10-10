@@ -1,0 +1,8 @@
+---
+- name: install python-psycopg2
+  apt:  pkg=python-psycopg2 state=latest
+  sudo: yes
+
+- name: install postgres
+  apt:  pkg=postgresql state=latest
+  sudo: yes

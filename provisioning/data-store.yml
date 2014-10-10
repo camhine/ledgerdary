@@ -1,0 +1,4 @@
+---
+- hosts: data-store
+  roles:
+    - data-store

@@ -1,3 +1,4 @@
 ---
 - include: front-end.yml
 - include: back-end.yml
+- include: data-store.yml
