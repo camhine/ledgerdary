@@ -13,6 +13,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.1)
     builder (3.2.2)
     chunky_png (1.3.1)
+    coderay (1.1.0)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
     compass (1.0.1)
@@ -47,9 +48,14 @@ GEM
     i18n (0.6.11)
     ice_nine (0.11.0)
     json (1.8.1)
+    method_source (0.8.2)
     minitest (5.4.1)
     multi_json (1.10.1)
     multi_xml (0.5.5)
+    pry (0.10.1)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
     rack (1.5.2)
     rack-accept (0.4.5)
       rack (>= 0.4)
@@ -62,6 +68,7 @@ GEM
     sass (3.4.5)
     shotgun (0.9)
       rack (>= 1.0)
+    slop (3.6.0)
     thin (1.6.2)
       daemons (>= 1.0.9)
       eventmachine (>= 1.0.0)
@@ -81,6 +88,7 @@ PLATFORMS
 DEPENDENCIES
   compass
   grape
+  pry
   rack
   rack-cors
   shotgun
