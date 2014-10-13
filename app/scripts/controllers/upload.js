@@ -2,7 +2,9 @@
 
 angular.module('ledgerdaryApp')
   .controller('UploadCtrl', function ($scope, FileUploader) {
+    var accountId = 'PLACEHOLDER';
+    var serviceUrl = 'http://ledgerdary.dev:3000/service/';
     $scope.uploader = new FileUploader({
-      url: 'http://localhost:9393/service/account/records'
+      url: serviceUrl + 'accounts/' + accountId + '/statements'
     });
   });
