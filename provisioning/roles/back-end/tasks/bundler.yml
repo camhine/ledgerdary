@@ -1,0 +1,6 @@
+---
+- name: install bundler for project
+  command: bash -lc "cd {{project_dir}} && gem install bundler"
+
+- name: run bundle on project
+  command: bash -lc "cd {{project_dir}} && bundle --binstubs"
