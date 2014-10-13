@@ -3,7 +3,7 @@ acrobat ansible_ssh_host=192.168.10.10
 [back-end]
 acrobat
 
-[front-end]
+[front-end-dev]
 acrobat
 
 [data-store]

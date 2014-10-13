@@ -1,0 +1,9 @@
+---
+- name: install nodejs-legacy
+  apt:  pkg=nodejs-legacy state=latest
+
+- name: install npm
+  apt:  pkg=npm state=latest
+
+- name: install yeoman
+  npm:  global=yes name=yo state=present

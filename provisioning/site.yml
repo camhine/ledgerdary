@@ -1,4 +1,5 @@
 ---
-- include: front-end.yml
 - include: back-end.yml
 - include: data-store.yml
+- include: front-end-dev.yml
+- include: front-end.yml

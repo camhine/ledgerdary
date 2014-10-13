@@ -1,0 +1,5 @@
+---
+- hosts: front-end-dev
+  roles:
+    - front-end-dev
+  sudo: yes
