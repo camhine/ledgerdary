@@ -1,17 +1,15 @@
+require 'json'
 
 require 'ledgerdary/api'
+require 'ledgerdary/statements/store'
 
 class Ledgerdary::API::Accounts < Grape::API
-  format :json  
+  format :json
 
+  # Where PLACEHOLDER identifies an account.
   post 'PLACEHOLDER/statements' do
-    # require 'pry'; binding.pry
-    "'placeholder' : 'This is where account statements, in CSV format, are posted.'"
+    url = Ledgerdary::Statements::Store.new('PLACEHOLDER').store(params['file']['tempfile'])
+    { _links: { self: route.route_path.split('(').first,
+                statement: url } }
   end
-
-  # resource :statements do
-  #   post do
-  #     "'placeholder' : 'This is where account statements, in CSV format, are posted.'"
-  #   end
-  # end
 end
