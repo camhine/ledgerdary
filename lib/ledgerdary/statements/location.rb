@@ -8,15 +8,15 @@ module Ledgerdary
 
       attr_reader :filepath, :id
 
-      def initialize(account_id)
-        @id = Time.now.utc.iso8601
-        @filepath = File.join(directory(account_id), @id)
+      def initialize(account:, id: Time.now.utc.iso8601)
+        @id = id
+        @filepath = File.join(directory(account), @id)
       end
 
       private
 
-      def directory(account_id)
-        dir = File.join(STATEMENT_ROOT, account_id)
+      def directory(account)
+        dir = File.join(STATEMENT_ROOT, account)
         FileUtils.mkdir(dir) unless Dir.exist?(dir)
         dir
       end

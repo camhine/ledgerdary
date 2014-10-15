@@ -32,6 +32,28 @@ module Ledgerdary
         end
       end
 
+      describe 'GET placeholder/statements/id' do
+        let(:location) do
+          instance_double(Ledgerdary::Statements::Location,
+                          filepath: 'filepath')
+        end
+
+        before do
+          allow(IO).to receive(:read) { 'statement content' }
+          allow(Ledgerdary::Statements::Location).to receive(:new) { location }
+        end
+
+        it 'returns the corresponing statement' do
+          expect(Ledgerdary::Statements::Location).to \
+            receive(:new).with(account: 'PLACEHOLDER', id: 'id')
+
+          expect(IO).to receive(:read).with('filepath', open_args: ['rb'])
+
+          get 'PLACEHOLDER/statements/id'
+
+          expect(last_response.body).to eq('statement content')
+        end
+      end
     end
   end
 end

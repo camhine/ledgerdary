@@ -6,8 +6,8 @@ module Ledgerdary
   module Statements
     describe Location do
 
-      describe '#initialize' do
-        subject { Location.new('account_id') }
+      describe '#create' do
+        subject { Location.new(account: 'account') }
 
         let(:dir_exist?) { true }
         let(:now) { double('now', utc: utc) }
@@ -21,7 +21,7 @@ module Ledgerdary
 
         it "sets the location's filepath" do
           expect(subject.filepath).to \
-          eq('/srv/ledgerdary/statements/account_id/iso8601')
+          eq('/srv/ledgerdary/statements/account/iso8601')
         end
 
         it "sets the location's id" do
@@ -33,7 +33,7 @@ module Ledgerdary
 
           it 'creates the directory' do
             expect(FileUtils).to \
-            receive(:mkdir).with('/srv/ledgerdary/statements/account_id')
+            receive(:mkdir).with('/srv/ledgerdary/statements/account')
             subject
           end
         end
