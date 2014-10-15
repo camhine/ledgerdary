@@ -1,0 +1,9 @@
+AllCops:
+  Include:
+    - '**/Rakefile'
+    - '**/config.ru'
+  Exclude:
+    - 'node_modules/**/*'
+
+Style/Documentation:
+  Enabled: false
