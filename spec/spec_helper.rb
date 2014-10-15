@@ -13,6 +13,4 @@ RSpec.configure do |config|
   end
 end
 
-$:.unshift(File.join(File.expand_path(File.dirname(__FILE__)), 'lib'))
-
-require 'ledgerdary'
+$LOAD_PATH.unshift(File.join(File.expand_path(File.dirname(__FILE__)), 'lib'))

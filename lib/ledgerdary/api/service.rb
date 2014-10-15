@@ -1,7 +1,11 @@
+require 'grape'
 
-require 'ledgerdary/api'
 require 'ledgerdary/api/accounts'
 
-class Ledgerdary::API::Service < Grape::API
-  mount Ledgerdary::API::Accounts => 'service/accounts'
+module Ledgerdary
+  module API
+    class Service < Grape::API
+      mount Ledgerdary::API::Accounts => 'service/accounts'
+    end
+  end
 end
