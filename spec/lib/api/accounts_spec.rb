@@ -11,7 +11,7 @@ module Ledgerdary::API
     end
 
     describe 'POST placeholder/statements' do
-      let(:store) { instance_double(Ledgerdary::Statements::Store, store: 'url') }
+      let(:store) { instance_double(Ledgerdary::Statements::Store, store: 'statement_id') }
 
       before do
         allow(Ledgerdary::Statements::Store).to receive(:new) { store }
@@ -19,8 +19,8 @@ module Ledgerdary::API
 
       it 'returns json containing links for self and statement' do
         post 'PLACEHOLDER/statements', params = {'file' => {'tempfile' => :tempfile}}
-        expect(JSON.parse(last_response.body)['_links']['self']).to eq('/PLACEHOLDER/statements')
-        expect(JSON.parse(last_response.body)['_links']['statement']).to eq('url')
+        expect(JSON.parse(last_response.body)['_links']['self']['href']).to eq('/PLACEHOLDER/statements')
+        expect(JSON.parse(last_response.body)['_links']['statement']['href']).to eq('/PLACEHOLDER/statements/statement_id')
       end
     end
 

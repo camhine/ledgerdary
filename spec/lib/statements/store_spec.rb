@@ -10,9 +10,9 @@ module Ledgerdary::Statements
 
     describe '#store' do
       let(:filepath) { 'filepath' }
-      let(:location) { instance_double('Location', filepath: filepath, url: url) }
+      let(:location) { instance_double('Location', filepath: filepath, id: id) }
       let(:tempfile) { 'tempfile' }
-      let(:url) { 'url' }
+      let(:id) { 'id' }
 
       before do
         allow(IO).to receive(:copy_stream)
@@ -29,8 +29,8 @@ module Ledgerdary::Statements
         subject.store(tempfile)
       end
 
-      it "returns the location's url" do
-        expect(subject.store(tempfile)).to eq(url)
+      it "returns the location's id" do
+        expect(subject.store(tempfile)).to eq(id)
       end
     end
   end

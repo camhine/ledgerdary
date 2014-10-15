@@ -11,7 +11,7 @@ module Ledgerdary::Statements
     def store(tempfile)
       location = Location.new(account_id)
       IO.copy_stream(tempfile, location.filepath)
-      location.url
+      location.id
     end
 
     private

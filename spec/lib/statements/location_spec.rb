@@ -22,8 +22,8 @@ module Ledgerdary::Statements
         expect(subject.filepath).to eq('/srv/ledgerdary/statements/account_id/iso8601')
       end
 
-      it "sets the location's url" do
-        expect(subject.url).to eq('/account_id/iso8601')
+      it "sets the location's id" do
+        expect(subject.id).to eq('iso8601')
       end
 
       context "when the location's directory doesn't exist yet" do

@@ -5,12 +5,11 @@ module Ledgerdary::Statements
   class Location
     STATEMENT_ROOT = File.join('/', 'srv', 'ledgerdary', 'statements')
 
-    attr_reader :filepath, :url
+    attr_reader :filepath, :id
 
     def initialize(account_id)
-      filename = Time.now.utc.iso8601
-      @filepath = File.join(Location.directory(account_id), filename)
-      @url = File.join('/', account_id, filename)
+      @id = Time.now.utc.iso8601
+      @filepath = File.join(Location.directory(account_id), @id)
     end
 
     private
