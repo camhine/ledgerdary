@@ -5,9 +5,9 @@ require 'ledgerdary/statements/store'
 module Ledgerdary
   module Statements
     describe Store do
-      subject { Store.new(account_id) }
+      subject { Store.new(account) }
 
-      let(:account_id) { 'account id' }
+      let(:account) { 'account' }
 
       describe '#store' do
         let(:filepath) { 'filepath' }
@@ -24,7 +24,7 @@ module Ledgerdary
         end
 
         it 'creates a location using the account id' do
-          expect(Location).to receive(:new).with(account_id)
+          expect(Location).to receive(:new).with(account: account)
           subject.store(tempfile)
         end
 

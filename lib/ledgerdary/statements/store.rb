@@ -5,19 +5,19 @@ require 'ledgerdary/statements/location'
 module Ledgerdary
   module Statements
     class Store
-      def initialize(account_id)
-        @account_id = account_id
+      def initialize(account)
+        @account = account
       end
 
       def store(tempfile)
-        location = Location.new(account_id)
+        location = Location.new(account: account)
         IO.copy_stream(tempfile, location.filepath)
         location.id
       end
 
       private
 
-      attr_reader :account_id
+      attr_reader :account
     end
   end
 end

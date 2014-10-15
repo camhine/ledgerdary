@@ -9,7 +9,7 @@ module Ledgerdary
       attr_reader :filepath, :id
 
       def initialize(account:, id: Time.now.utc.iso8601)
-        @id = id
+        @id       = id
         @filepath = File.join(directory(account), @id)
       end
 

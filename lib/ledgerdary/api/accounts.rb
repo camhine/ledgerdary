@@ -10,7 +10,7 @@ module Ledgerdary
       format :json
 
       content_type :csv, 'text/csv'
-      formatter :csv, ->(object, _) { object }
+      formatter :csv, -> (object, _) { object }
 
       helpers do
         def self_href
