@@ -9,15 +9,17 @@
   shell: tar -xzf ~/ruby-install-{{ruby_install_version}}.tar.gz creates=~/ruby-install-{{ruby_install_version}}
 
 - name: install ruby-install
-  command: make install chdir=/home/vagrant/ruby-install-{{ruby_install_version}} creates=/usr/local/bin/ruby-install
+  command: make install chdir={{ansible_env.HOME}}/ruby-install-{{ruby_install_version}} creates=/usr/local/bin/ruby-install
   sudo: yes
 
 - name: register project ruby version
   shell: cat .ruby-version chdir={{project_dir}}
   register: project_ruby_version
+  when: dev
 
 - name: install project ruby
   shell: /usr/local/bin/ruby-install ruby {{project_ruby_version.stdout}}
   args:
     creates: /opt/rubies/ruby-{{project_ruby_version.stdout}}
   sudo: yes
+  when: dev

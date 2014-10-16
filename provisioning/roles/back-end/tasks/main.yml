@@ -2,7 +2,9 @@
 - include: chruby.yml
 - include: ruby-install.yml
 - include: bundler.yml
+  when: dev
 
 - name: create directory for statement storage
   file: path=/srv/ledgerdary/statements state=directory owner={{ansible_ssh_user}} group={{ansible_ssh_user}}
   sudo: yes
+  when: dev

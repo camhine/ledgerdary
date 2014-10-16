@@ -5,11 +5,11 @@
     url: https://github.com/postmodern/chruby/archive/v{{chruby_version}}.tar.gz
 
 - name: extract chruby
-  command: tar xzvf ~/chruby-{{chruby_version}}.tar.gz creates=~/chruby-{{chruby_version}}
+  command: tar xzvf ~/chruby-{{chruby_version}}.tar.gz creates={{ansible_env.HOME}}/chruby-{{chruby_version}}
 
 - name: install chruby
   sudo: yes
-  command: make install chdir=/home/{{ansible_ssh_user}}/chruby-{{chruby_version}} creates=/usr/local/share/chruby/chruby.sh
+  command: make install chdir={{ansible_env.HOME}}/chruby-{{chruby_version}} creates=/usr/local/share/chruby/chruby.sh
 
 - name: enable chruby system-wide
   sudo: yes
